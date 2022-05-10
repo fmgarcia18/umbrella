@@ -2,6 +2,7 @@ package com.fmgarcia.umbrella.notifications.service;
 
 import com.fmgarcia.umbrella.notifications.dtos.EmailRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,8 @@ public class EmailServiceImpl implements EmailService{
             helper.setTo(emailRequest.getEmail());
             helper.setText(emailRequest.getContent());
             helper.setSubject(emailRequest.getSubject());
+
+            sender.send(message);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
