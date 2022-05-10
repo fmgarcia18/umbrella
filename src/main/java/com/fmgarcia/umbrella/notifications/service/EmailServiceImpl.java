@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class EmailServiceImpl implements EmailService{
@@ -28,6 +29,8 @@ public class EmailServiceImpl implements EmailService{
             helper.setSubject(emailRequest.getSubject());
 
             sender.send(message);
+
+            log.info("enviando email " + emailRequest.toString());
         } catch (MessagingException e) {
             e.printStackTrace();
         }

@@ -25,6 +25,6 @@ public class NotificationController {
 
         emailService.sendEmail(emailRequest);
 
-        return ResponseEntity.ok("Mi primera notificacion...");
+        return ResponseEntity.ok("Mi primera notificacion !!!");
     }
 }
