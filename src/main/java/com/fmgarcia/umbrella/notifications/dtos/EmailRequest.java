@@ -10,4 +10,5 @@ public class EmailRequest {
     private String email;
     private String content;
     private String subject;
+    private String template;
 }

@@ -2,6 +2,7 @@ package com.fmgarcia.umbrella.notifications.controller;
 
 import com.fmgarcia.umbrella.notifications.dtos.EmailRequest;
 import com.fmgarcia.umbrella.notifications.service.EmailService;
+import com.fmgarcia.umbrella.notifications.service.EmailTemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ public class NotificationController {
                 .email("fmgarcia@mailinator.com")
                 .content("Congratulations your firts email from heroku !!!")
                 .subject("Test send email")
+                .template("Template-2")
                 .build();
 
         emailService.sendEmail(emailRequest);

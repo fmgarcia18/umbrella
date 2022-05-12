@@ -6,13 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "email_templates")
+@Table(name = "email_templates", indexes = @Index(columnList = "uuid"))
 public class EmailTemplate {
 
     @Id
@@ -24,6 +25,14 @@ public class EmailTemplate {
     private String content;
     private Boolean enabled;
 
+    private String uuid;
+
     @Enumerated(EnumType.STRING)
     private EmailType type;
+
+    @PrePersist
+    public void setUUID() {
+        uuid = UUID.randomUUID().toString();
+    }
+
 }
